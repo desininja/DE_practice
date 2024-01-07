@@ -15,7 +15,7 @@ for line in sys.stdin:
 
 #Reducer
 max_freq = 0
-max_word = ""
+max_word = "Romeo"
 for word in word_dict.keys():
     if word_dict[word]>=max_freq:
         max_freq = word_dict[word]

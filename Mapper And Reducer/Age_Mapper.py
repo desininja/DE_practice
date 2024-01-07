@@ -6,4 +6,4 @@ for line in sys.stdin:
     if len(line) >=2:
         gender = line[1]
         age = line[2]
-        print ('%s\t1\t%s' % (gender, age))
+        print ('%s\t%s' % (gender, age))
