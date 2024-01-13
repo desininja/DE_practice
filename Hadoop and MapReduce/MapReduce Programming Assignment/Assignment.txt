@@ -1,0 +1,16 @@
+Welcome to the MapReduce Coding Assignment!!
+
+ 
+
+In this assignment, you will practice writing MapReduce codes in a 4.5GB dataset. This session contains the following segments-
+
+Dataset Description
+Problem Statement & Sample Dataset
+Steps for Downloading the Data on CDH
+Sample Output
+Clean-Up after the Assignment
+ 
+
+ 
+
+Happy Coding!!!
