@@ -1,0 +1,389 @@
+ssh -i ~/AWS_Project_RHEL.pem hadoop@ec2-3-93-72-1.compute-1.amazonaws.com
+
+AWS_Project_RHEL is the pem file to connect to ssh CLI hadoop.
+
+Setting up mysql connector on AWS:
+
+wget https://de-mysql-connector.s3.amazonaws.com/mysql-connector-java-8.0.25.tar.gz
+
+tar -xvf mysql-connector-java-8.0.25.tar.gz
+
+cd mysql-connector-java-8.0.25/
+sudo cp mysql-connector-java-8.0.25.jar /usr/lib/sqoop/lib/
+mysql_secure_installation
+
+After setting up MySQL
+
+shell command:
+mysql -u root -p  
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' identified by '123' WITH GRANT
+OPTION;
+
+
+to get the data into our hadoop
+first become a root user.
+sudo -i
+
+wget -P /root/ https://s3.amazonaws.com/sqoop.dse.2020/flights_data.txt
+wget -P /root/ https://s3.amazonaws.com/sqoop.dse.2020/online_data.txt
+
+Once the data files are downloaded to the local AWS EMR instance, they need to be moved
+from /root to some HDFS location for further analysis (you will see further).
+Step 3: Now, first, we have to create a database and then create some tables inside it so that
+we can further load the documents and data into them. These tables would be used for
+demonstrating the import-all-table command for Sqoop.
+The following commands are used to move the data from the local root directory to the HDFS
+location, so it could be further exported to MySQL.
+
+
+shell command 
+ hadoop fs -put /root/flights_data.txt /user/root/flights_data
+ hadoop fs -put /root/online_data.txt /user/root/online_data
+
+
+
+ SETTING UP MYSQL TABLES:
+
+CREATE DATABASE recipes_database;
+
+USE recipes_database;
+
+CREATE TABLE recipes (
+    recipe_id INT NOT NULL, 
+    recipe_name VARCHAR(30) NOT NULL, 
+    PRIMARY KEY (recipe_id),
+    UNIQUE (recipe_name));
+
+INSERT INTO recipes (recipe_id, recipe_name) VALUES (1,'Tacos'),(2,'Tomato Soup'), (3,'Grilled Cheese');
+
+CREATE TABLE ingredients ( 
+    ingredient_id INT NOT NULL,
+    ingredient_name VARCHAR(30) NOT NULL, 
+    ingredient_price INT NOT NULL,
+    PRIMARY KEY (ingredient_id), 
+    UNIQUE (ingredient_name));
+
+INSERT INTO ingredients (ingredient_id, ingredient_name,ingredient_price) VALUES 
+(1, 'Beef', 5), 
+(2, 'Lettuce', 1), 
+(3, 'Tomatoes',2), 
+(4, 'Taco Shell', 2), 
+(5, 'Cheese', 3), 
+(6, 'Milk', 1), 
+(7, 'Bread',2);
+
+CREATE TABLE recipe_ingredients ( recipe_id int NOT NULL,ingredient_id INT NOT NULL, amount INT NOT NULL, PRIMARY KEY (recipe_id,ingredient_id));
+
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, amount) VALUES 
+(1,1,1), 
+(1,2,2), 
+(1,3,2), 
+(1,4,3), 
+(1,5,1), 
+(2,3,2), 
+(2,6,1),
+(3,5,1), 
+(3,7,2);
+
+
+show tables;
+
+select * from ingredients;
+
+select * from recipe_ingredients;
+
+select * from recipes;
+
+Create database test;
+
+
+use test;
+
+Create table employee (
+    id INT, 
+    first_name VARCHAR(150), 
+    designation VARCHAR(150), 
+    salary INT, 
+    PRIMARY KEY (id));
+
+insert into employee values 
+(100,'Harbhajan','Software Engineer',5000);
+
+insert into employee values (101,'Yuvraj','Senior Software Engineer',7000);
+
+insert into employee values (102,'MS Dhoni','Manager',10000);
+
+insert into employee values (103,'Sachin Tendulkar','Senior Manager',11000);
+
+insert into employee values (104,'Virat Kohli',null, 7000);
+
+select * from employee;
+
+create table test.retailinfo(invoiceno varchar(150),stockcode varchar(150),description varchar(150),quantity int,invoicedate varchar(150),unitprice double,customerid int,country varchar(150));
+
+Create table test.flights_info (destination VARCHAR(150), origin VARCHAR(150), count INT);
+
+show tables;
+
+
+
+AFter creating all these tables we are going to perform import/ export commands in sqoop
+
+
+sqoop export --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table retailinfo \
+--username root --password 123 \
+--export-dir /user/root/online_data \
+--fields-terminated-by ',' --lines-terminated-by '\n'
+
+This command will export the tables in the ‘/user/root/online_data’ directory in the HDFS to the ‘retailinfo’ table in MySQL.
+
+ 
+
+Here, the ‘export’ keyword means that this is an export statement. ‘--connect’ is used to define the JDBC connect string. This is basically used to connect to the MySQL database. The ‘--table’ argument is used to define the table to which we will be exporting the data. ‘--username’ and ‘--password’ are used for providing the authentication credentials for accessing the MySQL database. In the case of our EMR instance, this is ‘root’ for the username and ‘123’ for the password. The ‘--export-dir’ argument is used to specify the HDFS directory where the data has to be taken from. The ‘--fields-terminated-by’ and ‘--lines-terminated-by’ arguments are used to specify how the files are formatted in HDFS so that MySQL can accordingly import the data from the files into its tables.
+
+The command works as following:
+
+Sqoop connects to the database and extracts the metadata information about the table on which the data is to be loaded. This information includes the number of columns, the data types of the columns, etc. Sqoop uses this information to create and compile the Java class used in the MapReduce job.
+
+Sqoop connects to the cluster and submits the MapReduce job to transfer the data from Hadoop to the database table in parallel.
+
+Note: What happens when the data is corrupted, for instance, the type of data in one of the columns does not match the expected type? In this case, the export will fail. Sqoop does not skip rows when it encounters an error; so, the error must be fixed before running the command again.
+
+
+sqoop export --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--export-dir /user/root/flights_data \
+--fields-terminated-by ',' --lines-terminated-by '\n'
+
+
+
+
+
+############ IMPORTING DATA: IMPORTING all tables using Sqoop
+
+
+hadoop fs -rm -r /user/root/flights_basic_command
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_basic_command \
+-m 1
+
+hadoop fs -ls /user/root/flights_basic_command
+
+
+After running this command, the data from the flights_info table in MySQL will be imported to the HDFS cluster.
+
+As you can see, the ‘import’ keyword is used to define that this is an import command. The ‘--target-dir’ argument is used to define the target directory where the MySQL table has to be imported. The ‘-m’ argument is used to set the number of mappers used for this job.
+Note: If the 'target-dir' is not set, then by default the table will be imported to a folder with the same name as the table, in the default home directory of the user in HDFS. 
+
+Note: Before running the Sqoop import command, you need to ensure that the target directory does not already exist in HDFS. Otherwise, an error will be thrown that the target directory does not exist.
+
+Now, the execution of the import command involves the following two steps:
+
+First, Sqoop connects to the database and fetches the table metadata. Based on the metadata retrieved, Sqoop internally generates a Java class and compiles it using the JDK and the Hadoop libraries available on the machine.
+
+Next, Sqoop connects to the Hadoop cluster and submits a MapReduce job, where each mapper transfers a portion of the table’s data. As multiple mappers run simultaneously, the transfer of data between the database and the Hadoop cluster occurs in parallel.
+
+Note: For all the tables that are imported using the given import command structure, the primary key is mandatory. If there is no primary key, then the ‘--split-by’ parameter has to be specified, instead.
+
+You can do this as follows:
+
+sqoop import --connect <database connect info> --username <username> --password <password> \
+ --table <tablename> --split-by <columnname>
+
+
+
+ sqoop-list-databases --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/ --username root --password 123
+
+  sqoop-list-tables --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test --username root --password 123
+
+
+
+sqoop import-all-tables \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/recipes_database \
+--username root \
+--password 123
+
+
+sqoop import-all-tables \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/recipes_database \
+--username root \
+--password 123 \
+--warehouse-dir /user/root/Recipes_DB
+
+
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table employee \
+--username root --password 123 \
+--null-string '\\N' --null-non-string '\\N' \
+--target-dir /user/root/employee_null_command \
+-m 1
+
+ 
+
+After running this command, the ‘employee’ table in MySQL will be imported to the HDFS cluster, and all the string-based values will be replaced with '\\N', whereas non-string-based values will be replaced with '\\N'.
+
+ 
+
+So, in this segment, you learnt how to handle NULL values using the Sqoop import command. Now, in the next segment, you will learn how to handle mappers for a Sqoop job.
+
+
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table employee \
+--username root --password 123 \
+--target-dir /user/root/employee_mapper_command \
+--split-by id -m 4
+
+After running this command, the ‘employee’ table in MySQL will be imported to the HDFS cluster and four files will be generated in the target directory. In this demonstration, we have used the default number of mappers for a Sqoop job; however, you can use any number of mappers for your Sqoop import job. The number of files generated in the target directory will be equal to that of mappers that you set for your Sqoop job.
+
+ 
+
+Note: While specifying the number of mappers, ensure you have provided the Split-by column, which is essentially the primary key of that particular table.
+
+ 
+
+So, in this segment, you learnt how to set the number of mappers while using the Sqoop import command. Now, in the next segment, you will learn how to import data in different file formats using the Sqoop import command.
+
+
+
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_parquet_command \
+-m 1 \
+--as-parquetfile
+
+
+sqoop import --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_sequence_command \
+-m 1 --as-sequencefile
+
+The aforementioned commands will store the ‘flights_info’ table in the form of a parquet file and a sequence file, respectively.
+
+
+
+
+sqoop import --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_compress_command \
+-m 1 --as-sequencefile \
+--compression-codec org.apache.hadoop.io.compress.SnappyCodec
+
+You can also use the ‘--compress’ argument in Apache Sqoop to store data in a compressed format in the form of a .gz file.
+
+
+
+
+
+MOVIELENS
+
+
+wget https://s3.amazonaws.com/sqoop.dse.2020/movielens.sql
+
++---------------------+
+| Tables_in_movielens |
++---------------------+
+| genres              |
+| genres_movies       |
+| movies              |
+| occupations         |
+| ratings             |
+| users               |
++---------------------+
+
+Import all the records from movies table database is movielens
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/movielens \
+--table movies \
+--username root --password 123 \
+--target-dir /user/root/MovieLens/movies \
+-m 1
+
+
+Import the records from all the tables of the MovieLens data set and find out the total number of records that are imported by the Sqoop job. Use ‘/user/root/MovieLens/All_tables’ as the warehouse directory for the import.
+
+
+sqoop import-all-tables \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/movielens \
+--username root --password 123 \
+--warehouse-dir /user/root/MovieLens/All_tables \
+-m 1
+
+
+
+
+
+
+
+
+
+
+sqoop import --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_where_command \
+--where "destination<>origin" \
+-m 1
+
+
+
+
+sqoop import --connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--username root --password 123 \
+--query 'select * from test.employee where $CONDITIONS' \
+--split-by id \
+--target-dir /user/root/flights_query_command
+
+
+
+Here, the ‘--query’ parameter holds the query and the ‘--split-by’ parameter indicates the column that is to be used for splitting the data into parallel tasks (by default, this column is the primary key of the main table). Remember that Sqoop connects to the Hadoop cluster and submits a MapReduce job, where each mapper transfers a portion of the table’s data. As multiple mappers run at the same time, the transfer of data between the database and the Hadoop cluster occurs in parallel.
+Also, ‘$CONDITIONS’ is a placeholder that would be substituted automatically by Sqoop to indicate which slice of data is to be transferred by each task. This type of import command is also known as free-form query import. Sqoop does not use the database catalogue to fetch the metadata while performing free-form query imports.
+Note: As the metadata is not fetched using the database catalogue during free-form query imports, some of the parameters that were automatically populated using the ‘--split-by’ parameter need to be explicitly specified. The split-by parameter is necessary, in case of free-form query to specify the primary key.
+By default, ‘$CONDITIONS’ will result in a full table import without any filter and so, the entire ‘employee’ table of the ‘test’ database will be imported as it is.
+
+
+
+sqoop job --create flightsimport -- import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password 123 \
+--target-dir /user/root/flights_job_command -m 1
+
+
+
+
+
+sqoop import \
+--connect jdbc:mysql://ec2-3-93-72-1.compute-1.amazonaws.com:3306/test \
+--table flights_info \
+--username root --password-file /user/root/pass.txt \
+--target-dir /user/root/flights \
+-m 1
+
+
+ hadoop fs -ls /user/root/flights/
+
+
+
+
+ So, in this video, you learnt about some of the techniques that you can use in order to tune Sqoop. If the size of the data to be imported is very large, then Sqoop takes time to transfer the data between an RDBMS and Hadoop. In such scenarios, you can tune Sqoop using boundary queries and mappers to fetch the data at a higher speed. There are other tuning techniques that you can use to tune Sqoop. You can read more about them by referring to the links provided in the ‘Additional Content’ section.
+
+ 
+
+Now, in addition to the size of data, you may also face network latency issues while transferring data between two networks in different zones. Here, since the RDBMS system is on-premise and Hadoop is on the cloud, network latency issues will also slow down the transfer of data. There is a concept of availability zones using which we can reduce network latency. You can read more about this in the additional content of this segment.
