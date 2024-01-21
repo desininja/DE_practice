@@ -1,1 +1,76 @@
 #All Hive queries
+
+ssh -i AWS_Project_RHEL.pem hadoop@ec2-54-165-227-45.compute-1.amazonaws.com
+
+
+# Switch to the root user
+sudo -i 
+
+
+# Create a directory named movie_ratings  
+mkdir /root/movie_ratings
+
+
+# Download the dataset by running the following command   
+wget ml-cloud-dataset.s3.amazonaws.com/u.user
+
+
+movie-ratings-bucket-practice
+
+
+aws s3 cp /root/movie_ratings/u.user  s3://movie-ratings-bucket-practice/tables/
+
+
+
+hive command:
+
+[root@ip-172-31-47-46 ~]# hive
+
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j2.properties Async: false
+hive> create database if not exists demo;
+OK
+Time taken: 0.938 seconds
+hive> describe database demo;
+OK
+demo		hdfs://ip-172-31-47-46.ec2.internal:8020/user/hive/warehouse/demo.db			
+Time taken: 0.676 seconds, Fetched: 1 row(s)
+hive> create database if not exists demo1 comment "This is a demo database";
+OK
+Time taken: 0.276 seconds
+hive> describe database demo1;
+OK
+demo1	This is a demo database	hdfs://ip-172-31-47-46.ec2.internal:8020/user/hive/warehouse/demo1.db			
+Time taken: 0.171 seconds, Fetched: 1 row(s)
+hive> describe database extended demo1;
+OK
+demo1	This is a demo database	hdfs://ip-172-31-47-46.ec2.internal:8020/user/hive/warehouse/demo1.db			
+Time taken: 0.168 seconds, Fetched: 1 row(s)
+hive> set hive.cli.print.header=true;
+hive> describe database extended demo1;
+OK
+db_name	comment	location	owner_name	owner_type	parameters
+demo1	This is a demo database	hdfs://ip-172-31-47-46.ec2.internal:8020/user/hive/warehouse/demo1.db			
+Time taken: 0.199 seconds, Fetched: 1 row(s)
+hive> 
+
+
+
+
+
+
+You learnt that you can create a database with the help of the following query:
+create database if not exists demo ;
+ 
+
+So, this database named ‘demo’ is created in the Hive warehouse itself. 
+
+To print the description of the database, you can write a query with the keyword “extended”:??
+describe database extended demo2 ;
+If you want to see the database’s headers, you will need to set the headers to true:
+set hive.cli.print.header=true ;
+ 
+
+
+ 
+
+
