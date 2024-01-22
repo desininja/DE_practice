@@ -13,8 +13,8 @@ mkdir /root/movie_ratings
 
 # Download the dataset by running the following command   
 wget ml-cloud-dataset.s3.amazonaws.com/u.user
-
-
+wget ml-cloud-dataset.s3.amazonaws.com/employee
+wget http://ml-cloud-dataset.s3.amazonaws.com/dept
 movie-ratings-bucket-practice
 
 
@@ -70,7 +70,67 @@ If you want to see the database’s headers, you will need to set the headers to
 set hive.cli.print.header=true ;
  
 
+Map joins: This is a technique to speed up queries by specifying the hint to the join query. In this method, you just avoid performing operations using reducers, and only the mapper performs the operations of join, thus making the queries faster.
 
+Partitioning: It basically refers to dividing the whole table into different groups to make the query faster. There are two types of partitioning methods:
+
+Static partitioning: In static partitioning, you need to load the data into the partitions manually.
+
+Dynamic partitioning: In dynamic partitioning, data gets allocated to the partitions automatically.
+
+Static partitioning is faster than dynamic partitioning.
+
+Bucketing: Bucketing is similar to partitioning, although it is generally preferable to bucket high-cardinality columns. It is a query optimisation technique.
+
+ 
+
+One of the very basic differences between bucketing and partitioning is that when you create partitions, new folders are created for each of the partitions; however, in the case of bucketing, multiple files (buckets) are created inside a single folder. 
+
+ 
+
+So, here is a list of the query optimisations techniques:
+
+Indexing
+
+Partitioning
+
+Bucketing
+
+Execution Engine Selection
+
+Map Joins
+
+File Formats
+
+ 
+
+You have already learnt about indexing, partitioning, bucketing and map joins. Let us summarise the remaining optimisation techniques.
+
+Execution Engine Selection: Most of the queries in this entire Hive module are performed on the MapReduce execution engine. But the newer version of Hive contains other execution engines that reduce the query time.
+Here are the different types of execution engines in Hive:
+
+Map Reduce: mr
+
+Tez
+
+Spark
+
+You can use the following query to change the execution engine:
+
+SET hive.execution.engine=mr;
+
+SET hive.execution.engine=tez;
+
+SET hive.execution.engine=spark;
+ 
+
+File Formats: You have already learnt that Hive works on the HDFS and Hadoop is simply a data storage system that stores data in different file formats. Now, there are many file formats that reduce latency in queries. Some of these file formats include the following:
+
+ORC file formats: You can refer to this link for a better understanding of these file formats.
+Parquet file format: You refer to this link for a better understanding of this file format.
+ 
+
+With this, you have learnt about query optimisation techniques.
  
 
 
