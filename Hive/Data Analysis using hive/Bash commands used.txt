@@ -1,0 +1,15 @@
+
+Login to your EMR cluster using AWS CLI:
+
+ssh -i ~/AWS_Project_RHEL.pem hadoop@ec2-50-16-25-20.compute-1.amazonaws.com
+
+
+This command will copy  the daya to your specified bucket. 
+
+aws s3 cp s3://hivedata-bde/Electronics_5.json s3://hive-data-analysis-amz-review/
+
+Create database amz_review and before that check whether the database is present or not
+Run this command to add SerDe jar.
+
+
+
