@@ -1,0 +1,23 @@
+Limitations of Amazon Redshift 
+
+Even though it is a completely managed service, it still needs some user intervention for vacuuming.
+
+The pricing of Redshift includes computing and storage. It is not possible to separate these two. However, alternatives such as Snowflake enable this.
+
+Data load and transfer involving non-AWS services are complex in Redshift. Using a platform such as Hevo Data can significantly improve this experience.
+
+Redshift is not custom-made for real-time operations; it is suited for batch operations. A platform such as Hevo Data can help you with this.
+
+Redshift scaling is not completely seamless; it includes a small window of downtime where the cluster is not available for querying. This downtime is in the range of minutes for newer generation nodes using elastic scaling, but for older generation nodes, it can go on for hours.
+
+
+Amazon Redshift alternatives
+Redshift is not the only cloud data warehouse service available in the market. The most popular cloud data warehouse services that directly compete with Redshift are listed below.
+
+Azure SQL Data Warehouse: This cloud data storage solution by Microsoft offers a dynamically operated infrastructure with the potential to process data in petabytes. While it is slower in the case of complicated requests, it can be used by consumers who are already utilising a Microsoft stack.
+
+BigQuery by Google: BigQuery provides an economical option to Redshift in terms of competitive availability. Usually slower than Redshift, BigQuery is considered more accessible and simpler to understand, as Google focuses on compatibility.
+
+Oracle Autonomous Data Warehouse (ADW): Oracle claims that ADW is quicker than Redshift, but at present, there are no specific comparison tests available. Oracle requires consumers to utilise Oracle's on-site licensing to reduce prices. This is a huge advantage for users who still invest heavily in Oracle technology.
+
+Snowflake: Snowflake offers a unique pricing model with separate computing and storage pricing. Its quality is equal to or better than that of Redshift in different situations. Snowflake's mere on-demand pricing for compute-only users can make it cheaper than Redshift.
