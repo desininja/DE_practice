@@ -1,9 +1,58 @@
-<mxfile host="app.diagrams.net" modified="2024-02-06T19:02:24.853Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" version="23.1.1" etag="LkM5jaLgX4hG2ADsEl4T" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-06T19:12:21.934Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" etag="syi3UvlJi4cLk_sY2noi" version="23.1.1" type="github">
   <diagram name="Page-1" id="-R-Mg5HMayyMecTNn0D5">
-    <mxGraphModel>
+    <mxGraphModel dx="793" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-1" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.rds_instance;" vertex="1" parent="1">
+          <mxGeometry x="100" y="140" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-2" value="This RDS instance contains OLTP table" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="75" y="240" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="T4pXBcKUDXkZwERdHQrP-3" target="T4pXBcKUDXkZwERdHQrP-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.hdfs_cluster;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="145" width="131.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="T4pXBcKUDXkZwERdHQrP-1" target="T4pXBcKUDXkZwERdHQrP-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-6" value="Transferring&lt;br&gt;all the data to HDFS using SQOOP&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="150" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-8" value="Amazon Redshift" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.redshift;" vertex="1" parent="1">
+          <mxGeometry x="200" y="435" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="T4pXBcKUDXkZwERdHQrP-9" target="T4pXBcKUDXkZwERdHQrP-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-9" value="Amazon S3" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="585.75" y="440" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-11" value="Transforming&amp;nbsp;&lt;br&gt;data into 5 separate files as per the requirement&lt;br&gt;and storing it into S3 buckets&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="640" y="290" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-14" value="Load data into Redshift and analyse them to answer the questions.&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="510" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-15" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/analytics/Power_BI_Embedded.svg;" vertex="1" parent="1">
+          <mxGeometry x="414.5" y="630" width="45.5" height="60.67" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.978;entryY=0.56;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="T4pXBcKUDXkZwERdHQrP-9" target="T4pXBcKUDXkZwERdHQrP-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="664" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-18" value="Power BI" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="407.25" y="690.6700000000001" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-19" value="Loading the data into Power BI from S3 buckets&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="620" width="160" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
