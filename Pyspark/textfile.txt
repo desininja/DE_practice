@@ -3,7 +3,7 @@ Choose a Spark release:
 2.4.6 (Jun 05 2020)
 
 
-Choose a package type: 
+Choose a package type
 Pre-built for Apache Hadoop 2.7
 
 
