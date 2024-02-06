@@ -1,0 +1,8 @@
+Sqoop command to load the data into HDFS from AWS RDS.
+
+sqoop export --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com/testdatabase \
+--table SRC_ATM_TRANS \
+--username student --password 123 \
+--null-string '\\N' --null-non-string '\\N' \
+--export-dir /user/root/atm_transaction \
+--fields-terminated-by ',' --lines-terminated-by '\n'
