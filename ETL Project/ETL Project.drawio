@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-06T19:12:21.934Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" etag="syi3UvlJi4cLk_sY2noi" version="23.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-06T19:33:52.127Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" etag="JPTFdRShqIJMsU6tU-AC" version="23.1.1" type="github">
   <diagram name="Page-1" id="-R-Mg5HMayyMecTNn0D5">
-    <mxGraphModel dx="793" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="793" dy="541" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -52,6 +52,9 @@
         </mxCell>
         <mxCell id="T4pXBcKUDXkZwERdHQrP-19" value="Loading the data into Power BI from S3 buckets&lt;br&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="620" y="620" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="T4pXBcKUDXkZwERdHQrP-20" value="4 Dim table and 1 Fact table" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="400" width="140" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
