@@ -1,8 +1,21 @@
+ssh -i AWS_Project_RHEL.pem hadoop@ec2-3-236-199-21.compute-1.amazonaws.com
+
+
+mysql -h upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com -u student -p
+
+
+sqoop-list-databases --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com:3306/ --username student --password STUDENT123
+
+sqoop-list-tables --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com:3306/testdatabase --username student --password STUDENT123
 Sqoop command to load the data into HDFS from AWS RDS.
 
-sqoop export --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com/testdatabase \
+sqoop import --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com:3306/testdatabase \
 --table SRC_ATM_TRANS \
---username student --password 123 \
+--username student --password STUDENT123 \
 --null-string '\\N' --null-non-string '\\N' \
---export-dir /user/root/atm_transaction \
+--target-dir /user/root/atm_transaction \
+-m 1 \
 --fields-terminated-by ',' --lines-terminated-by '\n'
+
+
+sqoop eval --connect jdbc:mysql://upgraddetest.cyaielc9bmnf.us-east-1.rds.amazonaws.com:3306/testdatabase --username student --password STUDENT123 --query "select count(*) from SRC_ATM_TRANS"
