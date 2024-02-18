@@ -1,0 +1,110 @@
+location,street_name,street_number,zipcode,lat,lon,location_id
+SÃƒÂ¦dding,Tarphagevej,59,6710,55.498,8.408,1
+Esbjerg,Strandbygade,20,6700,55.468,8.44,2
+Holstebro,Hostrupsvej,6,7500,56.373,8.625,3
+Vinderup,SÃƒÂ¸ndergade,5,7830,56.481,8.779,4
+NykÃƒÂ¸bing Mors Lobby,Kirketorvet,1,7900,56.795,8.86,5
+NykÃƒÂ¸bing Mors,Kirketorvet,1,7900,56.795,8.86,6
+GlyngÃƒÂ¸re,FÃƒÂ¦rgevej,1,7870,56.762,8.867,7
+Durup,Torvet,4,7870,56.745,8.949,8
+Herning,Dalgasgade,30,7400,56.135,8.971,9
+Jebjerg,Kirkegade,4,7870,56.671,9.013,10
+Fur,StenÃƒÂ¸re,19,7884,56.805,9.02,11
+Skive Lobby,Adelgade,8,7800,56.567,9.027,12
+Skive,Adelgade,8,7800,56.567,9.027,13
+Intern  Skive,Adelgade,8,7800,56.567,9.027,14
+Brugsen i Breum,AakjÃƒÂ¦rsvej,1,7870,56.688,9.069,15
+HÃƒÂ¸jslev,ÃƒËœsterrisvej,2,7840,56.551,9.11,16
+Ikast,RÃƒÂ¥dhusstrÃƒÂ¦det,12,7430,56.139,9.154,17
+DAYZ Feriecenter,LivÃƒÂ¸vej,80,9681,56.893,9.171,18
+LÃƒÂ¸gstÃƒÂ¸r,ÃƒËœsterbrogade,8,9670,56.967,9.253,19
+FarsÃƒÂ¸,Torvet,8,9640,56.771,9.34,20
+Viborg,Toldboden,3,8800,56.448,9.401,21
+Kolding,Vejlevej,135,6000,55.505,9.457,22
+Aars,Himmerlandsgade,70,9600,56.803,9.518,23
+Bryggen  Vejle,SÃƒÂ¸nderbrogade,2,7100,55.705,9.532,24
+Intern  Vejle,Havneparken,4,7100,55.707,9.541,25
+Drive Up  Vejle,Havneparken,4,7100,55.707,9.541,26
+Silkeborg,Borgergade,36,8600,56.179,9.552,27
+Brugsen ANS,SÃƒÂ¸ndermarksgade,14,8643,56.306,9.594,28
+Nibe,Torvet,1,9240,56.983,9.639,29
+Middelfart,Brogade,9,5500,55.507,9.727,30
+Aabybro,ÃƒËœstergade,6,9440,57.162,9.73,31
+Fredericia,SjÃƒÂ¦llandsgade,33,7000,55.564,9.757,32
+Hobro,Adelgade,31,9500,56.638,9.794,33
+StÃƒÂ¸vring,Baunebakken,4,9530,56.89,9.836,34
+Skallerup Klit,Nordre Klitvej,21,9800,57.494,9.838,35
+Svenstrup,GodthÃƒÂ¥bsvej,14,9230,56.973,9.851,36
+Horsens,GrÃƒÂ¸nlandsvej,5,8700,55.859,9.854,37
+Arden,Vestergade,6,9510,56.769,9.859,38
+Vadum,Ellehammersvej,43,9430,57.118,9.861,39
+Aalborg Storcenter indg. D,Hobrovej,452,9200,57.005,9.876,40
+Aalborg Storcenter  Afd,Hobrovej,452,9200,57.005,9.876,41
+Storcenter indg. A,Hobrovej,452,9200,57.005,9.876,42
+Aalborg Syd,Hobrovej,440,9200,57.005,9.881,43
+Skelagervej 15,Skelagervej,15,9000,57.023,9.891,44
+Hasseris,Hasserisvej,113,9000,57.044,9.898,45
+Vestre,Kastetvej,36,9000,57.053,9.905,46
+Skipperen,Vestre Alle,2,9000,57.034,9.908,47
+Aalborg Hallen,Europa Plads,4,9000,57.044,9.913,48
+Intern  ÃƒËœsterÃƒÂ¥,ÃƒËœsterÃƒÂ¥,12,9000,57.049,9.922,49
+NÃƒÂ¸rresundby,Torvet,6,9400,57.059,9.922,50
+ÃƒËœsterÃƒÂ¥  MÃƒÂ¸ller,ÃƒËœsterÃƒÂ¥,12,9000,57.049,9.922,51
+ÃƒËœsterÃƒÂ¥  Duus,ÃƒËœsterÃƒÂ¥,12,9000,57.049,9.922,52
+Nordkraft,Kjellerups Torv,1,9000,57.047,9.932,53
+Sauersvej,Fridtjof Nansens Vej,2,9210,57.023,9.94,54
+Intern  BrÃƒÂ¸nderslev,Algade,4,9700,57.269,9.945,55
+BrÃƒÂ¸nderslev,Algade,4,9700,57.269,9.945,56
+Vejgaard,Hadsundvej,20,9000,57.043,9.95,57
+Hirtshals,JÃƒÂ¸rgen Fibigersgade,4,9850,57.591,9.957,58
+HjÃƒÂ¸rring,ÃƒËœstergade,8,9800,57.459,9.988,59
+Intern  HjÃƒÂ¸rring,ÃƒËœstergade,8,9800,57.459,9.988,60
+Gistrup,Hadsundvej,346,9260,56.997,9.993,61
+Bispensgade,Bispensgade,35,9800,57.453,9.996,62
+Spar KÃƒÂ¸bmand TornhÃƒÂ¸j,TornhÃƒÂ¸jvej,4,9220,57.026,10.002,63
+Vodskov,Vodskovvej,27,9310,57.104,10.027,64
+HÃƒÂ¸rning Hallen,Toftevej,53,8362,56.091,10.033,65
+HÃƒÂ¸rning,NÃƒÂ¸rrealle,12,8362,56.086,10.037,66
+Randers,ÃƒËœstervold,16,8900,56.462,10.038,67
+Menu KÃƒÂ¸bmand Klarup,Klarupvej,52,9270,57.013,10.046,68
+Terndrup,Bymidten,2,9575,56.815,10.057,69
+Storvorde,VandvÃƒÂ¦rksvej,2,9280,57.005,10.101,70
+Hadsund,Storegade,12,9560,56.716,10.114,71
+Taars,Bredgade,91,9830,57.385,10.116,72
+Intern  Hjallerup,Hjallerup Centret,18,9320,57.168,10.148,73
+Hjallerup,Hjallerup Centret,18,9320,57.168,10.148,74
+HÃƒÂ¸jbjerg,Rosenvangsalle,194,8270,56.119,10.192,75
+Aarhus,Ceres Byen,75,8000,56.157,10.194,76
+Bindslev,NÃƒÂ¸rrebro,18,9881,57.541,10.2,77
+Aarhus,SÃƒÂ¸nder Alle,11,8000,56.153,10.206,78
+Daglig Brugsen ÃƒËœ.Hurup,Kystvejen,51,9560,56.804,10.271,79
+Odense,FÃƒÂ¦lledvej,3,5000,55.394,10.37,80
+Intern  Odense,FÃƒÂ¦lledvej,3,5000,55.394,10.37,81
+AalbÃƒÂ¦k,Centralvej,5,9982,57.593,10.412,82
+SÃƒÂ¦by Syd,Trafikcenter SÃƒÂ¦by Syd,1,9300,57.313,10.45,83
+Abildgaard,HjÃƒÂ¸rringvej,144,9900,57.447,10.506,84
+SÃƒÂ¦by,Vestergade,3,9300,57.334,10.515,85
+Frederikshavn,Danmarksgade,48,9900,57.441,10.537,86
+Intern  Frederikshavn,Danmarksgade,48,9900,57.441,10.537,87
+Intern Skagen,Sct. Laurentiivej,36,9990,57.723,10.59,88
+Skagen,Sct. Laurentiivej,36,9990,57.723,10.59,89
+Svendborg,Sankt Nicolai Gade,1,5700,55.058,10.609,90
+Aarhus Lufthavn,Ny Lufthavnsvej,24,8560,56.308,10.627,91
+Nyborg,Vestergade,35,5800,55.318,10.781,92
+Slagelse,Mariendals Alle,29,4200,55.398,11.342,93
+Slagelse,Mariendals AllÃƒÂ¨,29,4200,55.398,11.342,94
+HolbÃƒÂ¦k,Slotsvolden,7,4300,55.718,11.704,95
+Intern HolbÃƒÂ¦k,Slotsvolden,7,4300,55.718,11.704,96
+NÃƒÂ¦stved,Farimagsvej,8,4700,55.233,11.763,97
+Svogerslev,BrÃƒÂ¸nsager,1,4000,55.634,12.018,98
+Roskilde,KÃƒÂ¸benhavnsvej,65,4000,55.642,12.106,99
+Intern  Roskilde,KÃƒÂ¸benhavnsvej,65,4000,55.642,12.106,100
+KÃƒÂ¸ge,SÃƒÂ¸ndre Alle,1,4600,55.454,12.181,101
+HillerÃƒÂ¸d IdrÃƒÂ¦tscenter,Milnersvej,39,3400,55.921,12.299,102
+HillerÃƒÂ¸d,KÃƒÂ¸benhavnsvej,31,3400,55.933,12.314,103
+Lyngby,Jernbanevej,6,2800,55.772,12.5,104
+Frederiksberg,Gammel Kongevej,157,1850,55.677,12.537,105
+KÃƒÂ¸benhavn,Regnbuepladsen,5,1550,55.676,12.571,106
+Intern  KÃƒÂ¸benhavn,RÃƒÂ¥dhuspladsen,75,1550,55.676,12.571,107
+NÃƒÂ¦stved,Farimagsgade,8,4700,55.69,12.575,108
+HelsingÃƒÂ¸r,Sct. Olai Gade,39,3000,56.036,12.612,109
